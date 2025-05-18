@@ -1,0 +1,20 @@
+{
+  "name": "notification-service",
+  "version": "1.0.0",
+  "description": "Notification service for the multi-vendor marketplace.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0",
+    "kafka-node": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.6.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

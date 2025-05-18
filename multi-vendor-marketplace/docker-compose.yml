@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  user-service:
+    build:
+      context: ./user-service
+    ports:
+      - "3001:3001"
+    networks:
+      - marketplace-network
+
+  product-service:
+    build:
+      context: ./product-service
+    ports:
+      - "3002:3002"
+    networks:
+      - marketplace-network
+
+  order-service:
+    build:
+      context: ./order-service
+    ports:
+      - "3003:3003"
+    networks:
+      - marketplace-network
+
+  payment-service:
+    build:
+      context: ./payment-service
+    ports:
+      - "3004:3004"
+    networks:
+      - marketplace-network
+
+  recommendation-service:
+    build:
+      context: ./recommendation-service
+    ports:
+      - "3005:3005"
+    networks:
+      - marketplace-network
+
+  notification-service:
+    build:
+      context: ./notification-service
+    ports:
+      - "3006:3006"
+    networks:
+      - marketplace-network
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "3000:3000"
+    networks:
+      - marketplace-network
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - marketplace-network
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  marketplace-network:
+    driver: bridge
+
+volumes:
+  mongo-data:

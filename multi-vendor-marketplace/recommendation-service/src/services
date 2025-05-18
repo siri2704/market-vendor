@@ -1,0 +1,25 @@
+# recommendation-service/src/services/index.js
+
+const RecommendationModel = require('../models/recommendationModel');
+
+class RecommendationService {
+    async getRecommendations(userId) {
+        // Logic to fetch recommendations for a user
+        const recommendations = await RecommendationModel.find({ userId });
+        return recommendations;
+    }
+
+    async addRecommendation(userId, productId) {
+        // Logic to add a recommendation for a user
+        const newRecommendation = new RecommendationModel({ userId, productId });
+        await newRecommendation.save();
+        return newRecommendation;
+    }
+
+    async removeRecommendation(userId, productId) {
+        // Logic to remove a recommendation for a user
+        await RecommendationModel.deleteOne({ userId, productId });
+    }
+}
+
+module.exports = new RecommendationService();
