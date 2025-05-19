@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_USER_SERVICE_URL || 'http://localhost:5001/
 
 export default function RegisterLogin({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', role: 'buyer' });
   const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
@@ -42,10 +42,20 @@ export default function RegisterLogin({ onLogin }) {
       <h2>{isLogin ? 'Login' : 'Register'}</h2>
       <form onSubmit={handleSubmit}>
         {!isLogin && (
-          <div>
-            <label>Name</label>
-            <input name="name" value={form.name} onChange={handleChange} required style={{ width: '100%' }} />
-          </div>
+          <>
+            <div>
+              <label>Name</label>
+              <input name="name" value={form.name} onChange={handleChange} required style={{ width: '100%' }} />
+            </div>
+            <div>
+              <label>Role</label>
+              <select name="role" value={form.role} onChange={handleChange} style={{ width: '100%' }}>
+                <option value="buyer">Buyer</option>
+                <option value="vendor">Vendor</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+          </>
         )}
         <div>
           <label>Email</label>

@@ -9,6 +9,12 @@ const productSchema = new mongoose.Schema({
     stock: { type: Number, required: true, min: 0 },
     images: [{ type: String, required: true }],
     vendorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    reviews: [{
+        userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        rating: { type: Number },
+        review: { type: String },
+        createdAt: { type: Date, default: Date.now }
+    }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });
